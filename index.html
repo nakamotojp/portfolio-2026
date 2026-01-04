@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nakamoto Ryosuke</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Phosphor Icons (for clean UI icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" data-animate="fade-in">
+            <div class="sidebar-header">
+                <div class="profile-icon">
+                    <span class="initial">R</span>
+                </div>
+                <div class="profile-info">
+                    <span class="role">Student / Developer</span>
+                    <h1 class="name">Nakamoto Ryosuke</h1>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#about" class="nav-item active">
+                    <i class="ph ph-user"></i>
+                    <span>About Me</span>
+                </a>
+                <a href="#works" class="nav-item">
+                    <i class="ph ph-briefcase"></i>
+                    <span>Works</span>
+                </a>
+                <a href="#contact" class="nav-item">
+                    <i class="ph ph-envelope-simple"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="social-links">
+                    <a href="https://X.com/@R14dwBBIhB96398" target="_blank" class="social-link">X (Twitter)</a>
+                    <a href="https://instagram.com/ryor_i28" target="_blank" class="social-link">Instagram</a>
+                    <a href="https://github.com/ryorig" target="_blank" class="social-link">Github</a>
+                </div>
+
+                <div class="ticker-container">
+                    <div class="ticker-text">
+                        Welcome to RYOSUKE portfolio 💪🔥
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- About Section -->
+            <!-- Hero Section -->
+            <section id="hero" class="content-section" data-animate="fade-up">
+                <div class="card hero-card">
+                    <div class="hero-content">
+                        <div class="hero-text-content">
+                            <span class="role-pill">Student / Developer</span>
+                            <h1>Nakamoto Ryosuke</h1>
+                            <p class="hero-description">
+                                Striving to create solutions for STEAM education and regional issues.<br>
+                                香川高専電子システム工学科在籍。「まちごとアシスト」代表。
+                            </p>
+                            <div class="hero-actions">
+                                <a href="mailto:nakamotoryoke@gmail.com" class="button-primary">
+                                    Contact Me <i class="ph ph-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="image-wrapper">
+                            <img src="assets/img/hero_profile.jpg" alt="Nakamoto Ryosuke">
+                        </div>
+                        <div class="hero-decoration"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me Section (Bio + Voice) -->
+            <section id="about" class="content-section" data-animate="fade-up">
+                <div class="card about-card">
+                    <div class="card-header-simple">
+                        <h2>About Me</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="history-scroller">
+                            <div class="history-item">
+                                <div class="year">2010</div>
+                                <div class="desc">岡山県岡山市に生まれる</div>
+                            </div>
+                            <div class="history-item">
+                                <div class="year">2019</div>
+                                <div class="desc">父親の講座でプログラミングを始める</div>
+                            </div>
+                            <div class="history-item">
+                                <div class="year">2023</div>
+                                <div class="desc">
+                                    空手で全国出場<br>
+                                    "Rakuben"アプリを開発する<br>
+                                    子供たちのためのワークショップを開催する
+                                </div>
+                            </div>
+                            <div class="history-item">
+                                <div class="year">2024</div>
+                                <div class="desc">プログラミング講座を企画</div>
+                            </div>
+                            <div class="history-item">
+                                <div class="year">2025</div>
+                                <div class="desc">
+                                    香川高専に入学<br>
+                                    LINE YAHOO HACKUに参加<br>
+                                    "PrepMate"を開発
+                                </div>
+                            </div>
+                            <div class="history-item">
+                                <div class="year">Present</div>
+                                <div class="desc">香川県でプログラミング教室を運営</div>
+                            </div>
+                        </div>
+                        <!-- Decorative Orange Hands (CSS implemented) -->
+                        <div class="decorative-hands"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Works Section -->
+            <section id="works" class="content-section" data-animate="fade-up">
+                <h2 class="section-title">Works</h2>
+                <div class="grid-layout">
+
+                    <!-- Work Item 1 -->
+                    <div class="card work-card">
+                        <div class="work-image">
+                            <img src="assets/img/works/rakuben.jpg" alt="Rakuben">
+                        </div>
+                        <div class="work-info">
+                            <h3>らくべん</h3>
+                            <p>中学二年生の時に過去問を共有するアプリを作成。</p>
+                            <div class="tags">
+                                <span class="tag">App</span>
+                                <span class="tag">Education</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 2 -->
+                    <div class="card work-card">
+                        <div class="work-image">
+                            <img src="assets/img/works/programming.jpg" alt="Programming">
+                        </div>
+                        <div class="work-info">
+                            <h3>プログラミング講座</h3>
+                            <p>岡山・香川で小中学生向けのプログラミング講座を実施。</p>
+                            <div class="tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">Event</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 3 -->
+                    <div class="card work-card">
+                        <div class="work-image">
+                            <img src="assets/img/works/prepmate.jpg" alt="PrepMate">
+                        </div>
+                        <div class="work-info">
+                            <h3>PrepMate</h3>
+                            <p>LINE YAHOO HACKUで開発したコーディネートアプリ。</p>
+                            <div class="tags">
+                                <span class="tag">App</span>
+                                <span class="tag">Hackathon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 4 -->
+                    <div class="card work-card">
+                        <div class="work-image">
+                            <img src="assets/img/works/remona.jpg" alt="RemoNA">
+                        </div>
+                        <div class="work-info">
+                            <h3>RemoNA</h3>
+                            <p>AKATSUKIプロジェクト採択。地域課題解決プロジェクト。</p>
+                            <div class="tags">
+                                <span class="tag">Project</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section" data-animate="fade-up">
+                <div class="card contact-card">
+                    <h2 class="section-title">Contact</h2>
+                    <div class="contact-links">
+                        <a href="mailto:nakamotoryoke@gmail.com" class="contact-item">
+                            <i class="ph ph-envelope"></i>
+                            <span>nakamotoryoke@gmail.com</span>
+                        </a>
+                        <a href="https://github.com/ryorig" target="_blank" class="contact-item">
+                            <i class="ph ph-github-logo"></i>
+                            <span>@ryorig</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Works Modal -->
+    <div id="works-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close"><i class="ph ph-x"></i></button>
+            <div class="modal-grid">
+                <div class="modal-image-container">
+                    <img src="" alt="Work Preview" id="modal-image">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Project Title</h2>
+                    <div id="modal-tags" class="tags"></div>
+                    <p id="modal-desc">Description</p>
+                    <div class="modal-meta">
+                        <span class="label">Year</span>
+                        <span class="value" id="modal-year">2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

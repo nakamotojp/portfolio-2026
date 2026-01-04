@@ -1,0 +1,811 @@
+:root {
+    --bg-color: #F2F2F7;
+    /* Light gray apple-like bg */
+    --card-bg: #FFFFFF;
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+    --accent-color: #FF5500;
+    /* Orange from image */
+    --accent-hover: #E04800;
+    --border-radius: 24px;
+    --spacing-md: 20px;
+    --spacing-lg: 32px;
+    --font-main: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    /* Grid Pattern Background */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    height: 100vh;
+    overflow: hidden;
+    /* App-like feel */
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    height: 100vh;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-header {
+    margin-bottom: 40px;
+}
+
+.profile-icon {
+    width: 48px;
+    height: 48px;
+    background: #007AFF;
+    /* Blue preset */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.profile-info .role {
+    font-size: 12px;
+    color: #FF4500;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-info .name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* Nav */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space for caret */
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--accent-color);
+    /* Immediate color change */
+}
+
+.nav-item.active {
+    background-color: rgba(255, 85, 0, 0.08);
+    /* Soft orange bg for active */
+}
+
+.nav-item i {
+    font-size: 20px;
+    color: #FF4500;
+}
+
+/* Submenu */
+.nav-submenu {
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    padding-left: 48px;
+    /* Indent */
+    gap: 8px;
+    margin-top: 4px;
+    animation: slideDown 0.3s ease forwards;
+}
+
+.nav-plus.open .nav-submenu {
+    display: flex;
+}
+
+.submenu-item {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.submenu-item:hover,
+.submenu-item.active {
+    color: var(--accent-color);
+}
+
+.caret-icon {
+    transition: transform 0.3s ease;
+    font-size: 16px !important;
+}
+
+.nav-group.open .nav-submenu {
+    display: flex;
+}
+
+.nav-group.open .caret-icon {
+    transform: rotate(45deg);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 20px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.social-link:hover {
+    color: var(--text-primary);
+}
+
+.ticker-container {
+    background: #F5F5F7;
+    border-radius: 8px;
+    padding: 8px;
+    overflow: hidden;
+    font-size: 10px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    border-radius: var(--border-radius);
+    /* Remove padding here to allow full bleed sections if needed, 
+       but add padding to inner sections */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+
+    /* Scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.main-content::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* Hero Card */
+.hero-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 0;
+    /* Full bleed layout possible inside */
+    display: flex;
+    overflow: hidden;
+    min-height: 600px;
+    position: relative;
+    align-items: stretch;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hero-text-content {
+    max-width: 500px;
+}
+
+.role-pill {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FF4500;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hero-card h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #1D1D1F 0%, #48484A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text-primary);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.button-primary:hover {
+    /* transform: translateY(-2px); Removed per user request */
+    background: #333;
+}
+
+/* Hero Visual (Right Side) */
+.hero-visual {
+    flex: 1;
+    position: relative;
+    background: #F2F2F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Optional: Overlay/Gradient logic if needed */
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive Hero */
+@media (max-width: 1000px) {
+    .hero-card {
+        flex-direction: column-reverse;
+        /* Text on top or bottom? usually Text top on mobile, Image bottom. Let's try column-reverse to put text on bottom of image or just stack. 
+        Actually, for "Hero" usually Image Top, Text Bottom is standard for mobile apps. */
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+    }
+
+    .hero-visual {
+        height: 300px;
+        flex: none;
+    }
+
+    /* About Card (Text & Voice) */
+    .about-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 40px;
+        margin-top: 20px;
+        /* Space between Hero and About */
+    }
+
+    .card-header-simple {
+        display: flex;
+        padding-bottom: 20px;
+        margin-bottom: 60px;
+        /* Ensure push */
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .card-header-simple h2 {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(51, 51, 51, 0.4);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(51, 51, 51, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(51, 51, 51, 0);
+        }
+    }
+
+    .hero-content {
+        padding: 40px 24px;
+    }
+
+    .hero-card h1 {
+        font-size: 32px;
+    }
+}
+
+/* Works Grid */
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-style: italic;
+    /* Mimic image */
+    font-family: 'Times New Roman', serif;
+    /* Or similar serif */
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Works Grid Refinement */
+.work-card {
+    padding: 0;
+    overflow: hidden;
+    /* Remove card styling as requested */
+    background: transparent;
+    box-shadow: none !important;
+    border-radius: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.work-card:hover {
+    transform: none;
+    /* Removed floating effect */
+}
+
+/* Updated Image Container */
+.work-image {
+    height: 240px;
+    /* Taller */
+    background-color: transparent;
+    /* Removed placeholder bg */
+    border-radius: 0;
+    /* Request: Remove rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.work-card:hover .work-image {
+    /* transform: scale(1.02);  Optional subtle zoom */
+}
+
+.work-info {
+    padding: 0 4px;
+    /* Minimal padding */
+}
+
+.work-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.work-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    /* Hide description in grid if wanting very minimal, 
+       but request said "double tap for details", likely meaning summary is visible? 
+       Let's keep summary but minimal. */
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    /* Large modal */
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: #F5F5F7;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    transition: background 0.2s;
+}
+
+.modal-close:hover {
+    background: #E5E5EA;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    height: 100%;
+}
+
+.modal-image-container {
+    background: #F2F2F7;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Align start to allow scrolling */
+    overflow-x: auto;
+    /* Enable horizontal scroll */
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 0;
+}
+
+.modal-image-container img {
+    height: 100%;
+    width: 100%;
+    /* Or auto if maintaining aspect ratio matters more, but width 100% fills slide */
+    flex-shrink: 0;
+    object-fit: cover;
+    scroll-snap-align: center;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-info h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.modal-info .tags {
+    margin-bottom: 32px;
+}
+
+.modal-info p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.modal-meta .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.modal-meta .value {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@media (max-width: 800px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .modal-content {
+        height: auto;
+        max-height: 90vh;
+    }
+
+    .modal-image-container {
+        height: 300px;
+    }
+}
+
+
+/* Contact - Redesigned */
+.contact-card {
+    background-image: url('assets/img/myMonkey.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #0055FF;
+    /* Fallback */
+    color: white;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Text at bottom */
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card h2.section-title {
+    color: black;
+    margin-top: auto;
+    background-color: white;
+    /* Push to bottom if content small */
+}
+
+.contact-links {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.contact-item {
+    background: white;
+    color: #0055FF;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.contact-item:hover {
+    transform: scale(1.05);
+}
+
+.contact-item i {
+    font-size: 18px;
+}
+
+/* Force light color for sidebar footer to match new aesthetic if needed */
+
+
+/* Responsive */
+@media (max-width: 900px) {
+    .app-container {
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+        overflow: auto;
+        gap: 10px;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        max-height: auto;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        overflow: visible;
+    }
+
+    .card {
+        padding: 24px;
+    }
+}
+
+/* History Timeline */
+.history-scroller {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-top: 50px;
+    /* Added spacing */
+    padding-bottom: 20px;
+    /* Space for scrollbar or shadow */
+    margin-right: -40px;
+    /* Bleed to right edge */
+    padding-right: 40px;
+    /* Match bleed */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+    cursor: grab;
+}
+
+.history-scroller::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.history-item {
+    min-width: 220px;
+    flex-shrink: 0;
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-color);
+    border-radius: 50%;
+}
+
+.history-item .year {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.history-item .desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Mobile adjust for history */
+@media (max-width: 1000px) {
+    .history-scroller {
+        margin-right: -40px;
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .history-scroller {
+        margin-right: -24px;
+        /* Match card padding */
+        padding-right: 24px;
+    }
+}
