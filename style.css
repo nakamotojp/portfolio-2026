@@ -697,34 +697,125 @@ body {
 /* Force light color for sidebar footer to match new aesthetic if needed */
 
 
+/* Mobile Header */
+.mobile-header {
+    display: none;
+    /* Hidden on desktop */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-brand .profile-icon.small {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    margin: 0;
+}
+
+.mobile-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.menu-toggle {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
+    .mobile-header {
+        display: flex;
+    }
+
     .app-container {
         flex-direction: column;
-        padding: 10px;
+        padding: 80px 16px 20px 16px;
+        /* Top padding for header */
         height: auto;
         overflow: auto;
-        gap: 10px;
+        gap: 24px;
     }
 
     body {
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .sidebar {
-        width: 100%;
-        padding: 20px;
-        max-height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        z-index: 2000;
+        transform: translateX(-110%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0 20px 20px 0;
+        padding-top: 40px;
+        /* Space for close button if needed, or visual breathing room */
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
     }
 
     .sidebar-nav {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 10px;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-bottom: 20px;
     }
 
     .sidebar-footer {
-        display: none;
+        display: block;
+        /* Show footer in drawer */
     }
 
     .main-content {
