@@ -213,10 +213,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close sidebar when clicking a link (mobile UX)
     sidebarLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 900) {
+            if (window.innerWidth <= 1100) { // Updated to match new breakdown
                 closeSidebar();
             }
         });
     });
+
+    // --- View More Works Logic ---
+    const loadMoreContainer = document.getElementById('works-load-more');
+    const loadMoreBtn = loadMoreContainer ? loadMoreContainer.querySelector('button') : null;
+
+    // Initial State: Show only first 4
+    const workItems = document.querySelectorAll('.work-card');
+    const VISIBLE_COUNT = 4;
+
+    if (workItems.length > VISIBLE_COUNT) {
+        // Hide items beyond limit
+        workItems.forEach((item, index) => {
+            if (index >= VISIBLE_COUNT) {
+                item.classList.add('hidden');
+            }
+        });
+
+        // Show button
+        if (loadMoreContainer) {
+            loadMoreContainer.style.display = 'flex';
+        }
+
+        // Click Handler
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                // Show all hidden items
+                workItems.forEach(item => {
+                    item.classList.remove('hidden');
+                    // Add animation class if desired
+                    item.setAttribute('data-animate', 'fade-up');
+                    observer.observe(item); // Trigger animation observe
+                });
+
+                // Hide button
+                loadMoreContainer.style.display = 'none';
+            });
+        }
+    }
 
 });
