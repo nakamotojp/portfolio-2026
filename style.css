@@ -825,6 +825,31 @@ body {
     .card {
         padding: 24px;
     }
+
+    /* 2-column Works Grid for Mobile */
+    .grid-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .work-image {
+        height: 140px;
+        /* Reduced form 240px for mobile balance */
+        margin-bottom: 12px;
+    }
+
+    .work-info h3 {
+        font-size: 14px;
+    }
+
+    .work-info p {
+        font-size: 11px;
+    }
+
+    .work-info .tag {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
 }
 
 /* History Timeline */
