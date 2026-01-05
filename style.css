@@ -483,6 +483,16 @@ body {
     /* transform: scale(1.02);  オプションの微細なズーム */
 }
 
+/* グリッド内ではサムネイル（2枚目以降）を非表示にする */
+.work-image .hidden-thumb {
+    display: none;
+}
+
+/* モーダル内では表示する */
+.modal-image-container .hidden-thumb {
+    display: block;
+}
+
 .work-info {
     padding: 0 4px;
     /* 最低限のパディング */
@@ -573,23 +583,21 @@ body {
     background: #F2F2F7;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* スクロールを許可するために開始位置に揃える */
-    overflow-x: auto;
-    /* 水平スクロールを有効化 */
-    scroll-snap-type: x mandatory;
+    width: 100%;
+    height: auto;
     gap: 16px;
     padding: 0;
 }
 
 .modal-image-container img {
-    height: 100%;
+    height: auto;
     width: 100%;
-    /* アスペクト比を維持する場合はauto、幅100%はスライドを埋める */
     flex-shrink: 0;
     object-fit: cover;
-    scroll-snap-align: center;
+    display: block;
 }
 
 .modal-info {
